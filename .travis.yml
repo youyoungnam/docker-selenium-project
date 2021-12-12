@@ -13,7 +13,7 @@ before_install:
 
 after_success:
   - docker login -u $DOCKER_HUB_ID -p $DOCKER_HUB_PASSWORD
-  - docker push dbdudska113/selenium-app
+  - docker push dbdudska113/docker-repo:selenium-app
 
 before_deploy:
   - ls  
@@ -33,4 +33,4 @@ deploy:
 notiofications:
   email:
     recipients:
-      - dbdudska113@naver.com
+      - dbdudska255@gmail.com
