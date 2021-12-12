@@ -12,11 +12,11 @@ before_install:
   - docker build -t youngnam1004/selenium-app .
 
 after_success:
-  - echo "$DOCKER_HUB_PASSWORD" | docker login -u "$DOCKER_HUB_ID" --password-stdin
+  - docker login -u $DOCKER_HUB_ID -p $DOCKER_HUB_PASSWORD
   - docker push youngnam1004/selenium-app
 
 before_deploy:
-  - ls -l 
+  - ls  
   - mkdir -p move_deploy
   - mv rankingData.csv move_deploy/rankingData.csv 
 
