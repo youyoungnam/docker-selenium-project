@@ -1,0 +1,35 @@
+language: generic
+
+sudo: required
+
+services:
+  - docker 
+
+before_install:
+  - docker build -t youngnam1004/selenium-app .
+
+script:
+  - docker run -e CI=true youngnam1004/selenium-app --name y1004/s1004
+  - docker stop y1004/s1004
+
+after_success:
+  - echo "$DOCKER_HUB_PASSWORD" | docker login -u "$DOCKER_HUB_ID" --password-stdin
+  - docker push youngnam1004/selenium-app
+
+before_deploy:
+  - ls -l 
+  - mkdir -p move_deploy
+  - mv rankingData.csv move_deploy/rankingData.csv 
+
+deploy:
+  - provider: s3
+    acess_key_id: $AWS_ACCESS_ID
+    secret_access_key: $AWS_SECRET_KEY
+    bucket: csvsfiles
+    region: ap-northeast-2
+    skip_clean: true
+    acl: private
+    local_dir: move_deploy
+  on:
+    branch: master
+     
