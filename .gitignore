@@ -1,4 +1,3 @@
 driver/
 *.txt
-*.csv
-*.deb 
+*.deb
