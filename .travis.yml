@@ -9,11 +9,11 @@ branches:
     - master
 
 before_install:
-  - docker build -t youngnam1004/selenium-app .
+  - docker build -t selenium-app .
 
 after_success:
   - docker login -u $DOCKER_HUB_ID -p $DOCKER_HUB_PASSWORD
-  - docker push youngnam1004/selenium-app
+  - docker push dbdudska113/selenium-app
 
 before_deploy:
   - ls  
@@ -29,3 +29,8 @@ deploy:
     skip_clean: true
     acl: private
     local_dir: move_deploy
+
+notiofications:
+  email:
+    recipients:
+      - dbdudska113@naver.com
