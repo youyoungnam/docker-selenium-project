@@ -8,6 +8,10 @@ branches:
   only:
     - master
 
+before_install:
+  - docker build -t youngnam1004/selenium-app .
+
 script:
-  - pwd
-  - ls 
+  - docker run -v $(pwd):/app -e CI=true  youngnam1004/selenium-app
+  - ls
+  
