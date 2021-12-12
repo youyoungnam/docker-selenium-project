@@ -12,8 +12,7 @@ before_install:
   - docker build -t youngnam1004/selenium-app .
 
 script:
-  - docker run -e CI=true youngnam1004/selenium-app --name y1004/s1004
-  - docker stop y1004/s1004
+  - docker run -e CI=true youngnam1004/selenium-app
 
 after_success:
   - echo "$DOCKER_HUB_PASSWORD" | docker login -u "$DOCKER_HUB_ID" --password-stdin
