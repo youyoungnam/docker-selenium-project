@@ -4,6 +4,9 @@ sudo: required
 
 services:
   - docker 
+branches:
+  only:
+    - master
 
 before_install:
   - docker build -t youngnam1004/selenium-app .
@@ -30,6 +33,3 @@ deploy:
     skip_clean: true
     acl: private
     local_dir: move_deploy
-  on:
-    branch: master
-     
